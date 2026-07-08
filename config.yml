@@ -1,0 +1,15 @@
+time_format: '[%H:%M:%S]'
+default_user: System
+log_file: log.log
+include_timestamp: true
+include_level: true
+separator: ' :: '
+file_mode: a
+write_to_console: true
+auto_create_dirs: true
+enabled_levels:
+- DEBUG
+- INFO
+- WARNING
+- ERROR
+- CRITICAL

@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e .
+
+      - name: Syntax check
+        run: |
+          python -m py_compile eutils.py eutils_logger.py other/eutils.py other/eutils_logger.py main.py
+
+      - name: Import smoke test
+        run: |
+          python -c "import eutils; import eutils_logger; from eutils_logger import Logger; Logger().info('ci smoke test'); print('imports ok')"

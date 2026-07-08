@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "eutils-logger"
+version = "0.1.0"
+description = "A configurable Python logger API with utility helpers"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "PyYAML>=6.0"
+]
+authors = [
+  { name = "cyberbeepboop" }
+]
+keywords = ["logger", "logging", "utilities", "python"]
+
+[tool.setuptools]
+py-modules = ["eutils", "eutils_logger"]
+
+[tool.setuptools.packages.find]
+include = ["other*"]
